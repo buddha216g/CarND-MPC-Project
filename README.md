@@ -16,7 +16,9 @@ In a real car, there will be a time delay between actuation command and its exec
 
 ## Timestep Length and Elapsed Duration (N & dt)
 
-Larger values of dt result in less frequent actuations, which makes it harder to accurately approximate a continuous reference trajectory. Hence dt of 0.1 sec was chosen. Tried various values of N. 5 through 20 and ended up using 10.
+Larger values of dt result in less frequent actuations, which makes it harder to accurately approximate a continuous reference trajectory. Hence dt of 0.1 sec was chosen. 
+Tried various values of N. 5 through 20. Since larger N takes more computational time, it is not necessarily better.  Ended up using 10.
+T which is a product of N and dt is 1 sec. This is a reasonable choice because beyond a few seconds horizon will change sufficiently so that prediction into future will not make sense.
 
 ## Polynomial Fitting and MPC Preprocessing
 
