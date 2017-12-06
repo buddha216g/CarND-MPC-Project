@@ -12,7 +12,7 @@ Kinematic model was used. These are simplifications of dynamic models that ignor
 ![image](https://user-images.githubusercontent.com/15799394/33639216-3a5d4f82-da50-11e7-94c0-6ab4be29ed31.png)
 
 ## Model Predictive Control with Latency
-In a real car, there will be a time delay between actuation command and its execution. A realistic delay might be about 100 milliseconds. Hence the actual state of the vehicle was "shifted" into the future by 100 ms.
+In a real car, there will be a time delay between actuation command and its execution. A realistic delay might be about 100 milliseconds. Used kinematic equations to predict the states for after 100ms before sending them to MPC.
 
 ## Timestep Length and Elapsed Duration (N & dt)
 
@@ -35,11 +35,11 @@ Fine tuned these multipliers in the following way so that the car could drive ar
 https://youtu.be/nKjoIevHa4Q
 
 // Set weights parameters for the cost function
-#define W_CTE 5000   //increase to reduce cte
-#define W_EPSI 4000  //increase to reduce oscillations
-#define W_DV 1000    // increase to minimize sharp turns at high speeds
+#define W_CTE 3500   //increase to reduce cte
+#define W_EPSI 3500  //increase to reduce oscillations
+#define W_DV 800    // increase to minimize sharp turns at high speeds
 #define W_DDELTA 200 // increase to minimize sharp turns
-#define W_DA 1000  //increase to lessen sudden accelration or decelration
+#define W_DA 100  //increase to lessen sudden accelration or decelration
 
 
 ---
