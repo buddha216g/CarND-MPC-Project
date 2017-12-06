@@ -16,25 +16,20 @@ In a real car, there will be a time delay between actuation command and its exec
 
 ## Timestep Length and Elapsed Duration (N & dt)
 
-Student discusses the reasoning behind the chosen N (timestep length) and dt (elapsed duration between timesteps) values. Additionally the student details the previous values tried.
-
 Larger values of dt result in less frequent actuations, which makes it harder to accurately approximate a continuous reference trajectory. Hence dt of 0.1 sec was chosen. Tried various values of N. 5 through 20 and ended up using 10.
 
 ## Polynomial Fitting and MPC Preprocessing
-
-A polynomial is fitted to waypoints.
-If the student preprocesses waypoints, the vehicle state, and/or actuators prior to the MPC procedure it is described.
 
 The way points given were in the global co-ordinate system. Hence converted them into vehicle co-ordinate system , before fitting them to the 3rd degree polynomial.
 Used polyfit to fit a 3rd order polynomial to the given x and y coordinates representing waypoints.
 Used polyeval to evaluate y values of given x coordinates.
 Cross track error and orientation error, along with other parameters were used to build the cost function for MPC, which gave back the steering angle and throttle.
 
-Cost functions were set up so as to minimize CTE and orientation.
-Also penalized the model for not maintaining speed limit and making sharp abrupt turns.
-Added multipliers to enhance the penalty to the model.
+Cost functions were set up so as to minimize CTE and orientation errors. Also penalized the model for not maintaining speed limit and making sharp abrupt turns.
 
-Fine tuned these multipliers in the following way:
+Added multipliers to enhance the penalties to the model.
+
+Fine tuned these multipliers in the following way so that the car could drive around the track.
 
 // Set weights parameters for the cost function
 #define W_CTE 5000   //increase to reduce cte
