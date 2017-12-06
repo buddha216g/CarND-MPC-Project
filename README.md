@@ -5,7 +5,7 @@ Self-Driving Car Engineer Nanodegree Program
 
 ## The Model
 
-Kinematic models was used. These are simplifications of dynamic models that ignore tire forces, gravity, and mass.
+Kinematic model was used. These are simplifications of dynamic models that ignore tire forces, gravity, and mass.
 
 [x,y,ψ,v] is the state of the vehicle, Lf is a physical characteristic of the vehicle, and [δ,a] are the actuators, or control inputs, to our system. State changes over time based on the previous state and current actuator inputs are defined by the equatiions below.
 
