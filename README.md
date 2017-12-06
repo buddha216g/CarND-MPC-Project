@@ -1,6 +1,31 @@
 # CarND-Controls-MPC
 Self-Driving Car Engineer Nanodegree Program
 
+
+
+## The Model
+
+Kinematic models was used. These are simplifications of dynamic models that ignore tire forces, gravity, and mass.
+
+[x,y,ψ,v] is the state of the vehicle, Lf is a physical characteristic of the vehicle, and [δ,a] are the actuators, or control inputs, to our system.
+
+
+
+## Timestep Length and Elapsed Duration (N & dt)
+
+Student discusses the reasoning behind the chosen N (timestep length) and dt (elapsed duration between timesteps) values. Additionally the student details the previous values tried.
+
+## Polynomial Fitting and MPC Preprocessing
+
+A polynomial is fitted to waypoints.
+
+If the student preprocesses waypoints, the vehicle state, and/or actuators prior to the MPC procedure it is described.
+
+## Model Predictive Control with Latency
+
+The student implements Model Predictive Control that handles a 100 millisecond latency. Student provides details on how they deal with latency.
+
+
 ---
 
 ## Dependencies
