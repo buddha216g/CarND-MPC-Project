@@ -32,7 +32,7 @@ Cost functions were set up so as to minimize CTE and orientation errors. Also pe
 Added multipliers to enhance the penalties to the model.
 
 Fine tuned these multipliers in the following way so that the car could drive around the track.
-https://youtu.be/nKjoIevHa4Q
+https://youtu.be/e6sgCSyLo6Y
 
 // Set weights parameters for the cost function
 #define W_CTE 3500   //increase to reduce cte
