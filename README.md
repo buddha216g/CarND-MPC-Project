@@ -7,23 +7,41 @@ Self-Driving Car Engineer Nanodegree Program
 
 Kinematic models was used. These are simplifications of dynamic models that ignore tire forces, gravity, and mass.
 
-[x,y,ψ,v] is the state of the vehicle, Lf is a physical characteristic of the vehicle, and [δ,a] are the actuators, or control inputs, to our system.
+[x,y,ψ,v] is the state of the vehicle, Lf is a physical characteristic of the vehicle, and [δ,a] are the actuators, or control inputs, to our system. State changes over time based on the previous state and current actuator inputs are defined by the equatiions below.
 
+![image](https://user-images.githubusercontent.com/15799394/33639216-3a5d4f82-da50-11e7-94c0-6ab4be29ed31.png)
 
+## Model Predictive Control with Latency
+In a real car, there will be a time delay between actuation command and its execution. A realistic delay might be about 100 milliseconds. Hence the actual state of the vehicle was "shifted" into the future by 100 ms.
 
 ## Timestep Length and Elapsed Duration (N & dt)
 
 Student discusses the reasoning behind the chosen N (timestep length) and dt (elapsed duration between timesteps) values. Additionally the student details the previous values tried.
 
+Larger values of dt result in less frequent actuations, which makes it harder to accurately approximate a continuous reference trajectory. Hence dt of 0.1 sec was chosen. Tried various values of N. 5 through 20 and ended up using 10.
+
 ## Polynomial Fitting and MPC Preprocessing
 
 A polynomial is fitted to waypoints.
-
 If the student preprocesses waypoints, the vehicle state, and/or actuators prior to the MPC procedure it is described.
 
-## Model Predictive Control with Latency
+The way points given were in the global co-ordinate system. Hence converted them into vehicle co-ordinate system , before fitting them to the 3rd degree polynomial.
+Used polyfit to fit a 3rd order polynomial to the given x and y coordinates representing waypoints.
+Used polyeval to evaluate y values of given x coordinates.
+Cross track error and orientation error, along with other parameters were used to build the cost function for MPC, which gave back the steering angle and throttle.
 
-The student implements Model Predictive Control that handles a 100 millisecond latency. Student provides details on how they deal with latency.
+Cost functions were set up so as to minimize CTE and orientation.
+Also penalized the model for not maintaining speed limit and making sharp abrupt turns.
+Added multipliers to enhance the penalty to the model.
+
+Fine tuned these multipliers in the following way:
+
+// Set weights parameters for the cost function
+#define W_CTE 5000   //increase to reduce cte
+#define W_EPSI 4000  //increase to reduce oscillations
+#define W_DV 1000    // increase to minimize sharp turns at high speeds
+#define W_DDELTA 200 // increase to minimize sharp turns
+#define W_DA 1000  //increase to lessen sudden accelration or decelration
 
 
 ---
