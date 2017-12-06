@@ -9,13 +9,13 @@
 #define REF_V 75
 
 // Set weights parameters for the cost function
-#define W_CTE 5000   //increase to remove cte
-#define W_EPSI 4000  //increase to remove oscillations
-#define W_DV 1000    // increase to remove sharp turns at high speeds
+#define W_CTE 3500   //increase to remove cte
+#define W_EPSI 3500  //increase to remove oscillations
+#define W_DV 800    // increase to remove sharp turns at high speeds
 #define W_DELTA 5
 #define W_A 5
 #define W_DDELTA 200 // increase to remove sharp turns
-#define W_DA 1000  //increase to remove sudden accelration or decelration
+#define W_DA 100  //increase to remove sudden accelration or decelration
 
 // Set lower and upper limits for variables.
 #define DED25RAD 0.436332 // 25 deg in rad, used as delta bound
